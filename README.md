@@ -14,11 +14,11 @@ linear se plotarmos seus valores num grafico e eles "parecerem" uma linha.
 Os passos para gerar uma regressão linear são 5:
 
 
-1 randomizar os inputs da função de hipotese
-2 computar o Mean Squared Error
-3 Calcular as derivativas parciais
-4 Atualiazar os parametros baseados nas derivativas e na taxa de apredizado
-5 repetir do 2 ao 4 até o error ser o menor possivel.
+1. randomizar os inputs da função de hipotese
+2. computar o Mean Squared Error
+3. Calcular as derivativas parciais
+4. Atualiazar os parametros baseados nas derivativas e na taxa de apredizado
+5. repetir do 2 ao 4 até o error ser o menor possivel.
 
 ### Função de Hipotese (Hypoteses Function)
 
