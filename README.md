@@ -27,3 +27,12 @@ h0(x) = theta1(x) + theta0 == y = m(x) + b
 é a função linear que vimos no primeiro grau da escola, o parametro theta1
 (m) define a angulação da linha e o theta0 (b) define onde a linha cruza o
 eixo y.
+
+
+# TODO
+
+- [ ] conseguir um dataset linear para aula
+- [ ] montar uma analise desse dataset, e se possivel, um programa para limpar os dados
+- [ ] criar um grafico com todas as linhas usadas até a aproximação da linha ideal
+- [ ] explicar melhor R2 e a derivação
+- [ ] API pra usar o modelo
