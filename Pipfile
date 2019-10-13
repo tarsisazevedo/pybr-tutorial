@@ -12,6 +12,8 @@ pytest = "*"
 numpy = "*"
 matplotlib = "*"
 flask = "*"
+pandas = "*"
+seaborn = "*"
 
 [requires]
 python_version = "3.7"

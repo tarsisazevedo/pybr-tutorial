@@ -28,7 +28,7 @@ def plot_lines(lines_to_plot, X, y):
     xplot = numpy.linspace(min_x, max_x, 1000)
     yplot = theta0 + theta1 * xplot
     pyplot.scatter(X, y)
-    pyplot.axis([-10, 10, 0, 200])
+    pyplot.axis("tight")
     for theta0, theta1 in lines_to_plot[1:]:
         yplot = theta0 + theta1 * xplot
         pyplot.plot(xplot, yplot, color="#ff0000", label="Regression Line")
@@ -58,16 +58,16 @@ def update_parameters(theta0, theta1, X, y, alpha=0.005):
     return theta0, theta1
 
 
-def fit(X, y):
+def fit(X, y, epochs=10000, learning_rate=0.005):
     theta0 = numpy.random.rand()
     theta1 = numpy.random.rand()
     lines_to_plot = []
-    for i in range(0, 1000):
-        if i % 100 == 0:
+    for i in range(0, epochs):
+        if i % (epochs / 10) == 0:
             lines_to_plot.append((theta0, theta1))
-        theta0, theta1 = update_parameters(theta0, theta1, X, y, 0.005)
+        theta0, theta1 = update_parameters(theta0, theta1, X, y, learning_rate)
     plot_lines(lines_to_plot, X, y)
-    return theta0[0], theta1[0]
+    return theta0, theta1
 
 
 def generate_model(theta0, theta1):
