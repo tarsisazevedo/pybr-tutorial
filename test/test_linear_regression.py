@@ -11,10 +11,10 @@ def test_hypoteses_function():
 
 def test_cost_function():
     X = [1, 2, 3, 4]
-    y = [4, 3, 2, 1]
+    y = [5, 6, 7, 8]
     theta0 = 1
     theta1 = 2
-    assert linear_regression.cost(theta0, theta1, X, y) == 47
+    assert linear_regression.cost(theta0, theta1, X, y) == 0.7142857142857143
 
 
 def test_derivative():
@@ -43,6 +43,6 @@ def test_update_parameters():
 def test_fit():
     X = [1, 2, 3, 4]
     y = [5, 6, 7, 8]
-    theta0, theta1 = linear_regression.fit(X, y)
+    theta0, theta1 = linear_regression.fit(X, y, plot_line=False)
     assert theta0 > 0
     assert theta1 > 0

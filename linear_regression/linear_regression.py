@@ -58,15 +58,16 @@ def update_parameters(theta0, theta1, X, y, alpha=0.005):
     return theta0, theta1
 
 
-def fit(X, y, epochs=10000, learning_rate=0.005):
+def fit(X, y, epochs=10000, learning_rate=0.005, plot_line=True):
     theta0 = numpy.random.rand()
     theta1 = numpy.random.rand()
     lines_to_plot = []
     for i in range(0, epochs):
-        if i % (epochs / 10) == 0:
+        if plot_line and i % (epochs / 10) == 0:
             lines_to_plot.append((theta0, theta1))
         theta0, theta1 = update_parameters(theta0, theta1, X, y, learning_rate)
-    plot_lines(lines_to_plot, X, y)
+    if plot_line:
+        plot_lines(lines_to_plot, X, y)
     return theta0, theta1
 
 
