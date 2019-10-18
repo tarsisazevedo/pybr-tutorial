@@ -13,8 +13,8 @@ def cost(theta0, theta1, X, y):
     y_mean = sum(y) / len(y)
     for (xi, yi) in zip(X, y):
         y_pred = hypoteses(theta0, theta1, xi)
-        mse_model += (y_pred - yi) ** 2
-        mse_baseline += (y_pred - y_mean) ** 2
+        mse_model += (yi - y_pred) ** 2
+        mse_baseline += (yi - y_mean) ** 2
     r2 = 1 - (mse_model / mse_baseline)
     return r2
 
