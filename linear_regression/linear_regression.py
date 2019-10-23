@@ -1,3 +1,5 @@
+import random
+
 import numpy
 from matplotlib import pyplot
 
@@ -35,6 +37,14 @@ def plot_lines(lines_to_plot, X, y):
     pyplot.show()
 
 
+def plot_gradient(cost_plot):
+    pyplot.title("Cost/Loss per Iteration")
+    pyplot.xlabel("Number of iterations")
+    pyplot.ylabel("Cost/Loss")
+    pyplot.plot(cost_plot)
+    pyplot.show()
+
+
 def derivatives(theta0, theta1, X, y):
     dtheta0 = 0
     dtheta1 = 0
@@ -49,25 +59,59 @@ def derivatives(theta0, theta1, X, y):
     return dtheta0, dtheta1
 
 
-def update_parameters(theta0, theta1, X, y, alpha=0.005):
+def derivatives_sthocastic(theta0, theta1, X, y, sample_size=128):
+    dtheta0 = 0
+    dtheta1 = 0
+
+    for i in range(sample_size):
+        random_index = random.randint(0, len(X) - 1)
+        xi = X[random_index]
+        yi = y[random_index]
+        dtheta0 += hypoteses(theta0, theta1, xi) - yi
+        dtheta1 += (hypoteses(theta0, theta1, xi) - yi) * xi
+
+    dtheta0 /= len(X)
+    dtheta1 /= len(X)
+    return dtheta0, dtheta1
+
+
+def update_parameters(
+    theta0, theta1, X, y, alpha=0.005, sample_size=128, plot_line=False
+):
     # gradient descent
     dtheta0, dtheta1 = derivatives(theta0, theta1, X, y)
     theta0 = theta0 - (alpha * dtheta0)
     theta1 = theta1 - (alpha * dtheta1)
-
     return theta0, theta1
 
 
-def fit(X, y, epochs=10000, learning_rate=0.005, plot_line=True):
+def fit(
+    X,
+    y,
+    epochs=10000,
+    learning_rate=0.005,
+    plot_line=True,
+    plot_gradient_graph=False,
+    sample_size=128,
+):
     theta0 = numpy.random.rand()
     theta1 = numpy.random.rand()
     lines_to_plot = []
+    costs = []
     for i in range(0, epochs):
         if plot_line and i % (epochs / 10) == 0:
             lines_to_plot.append((theta0, theta1))
-        theta0, theta1 = update_parameters(theta0, theta1, X, y, learning_rate)
+        if plot_gradient_graph:
+            costs.append(cost(theta0, theta1, X, y))
+        theta0, theta1 = update_parameters(
+            theta0, theta1, X, y, learning_rate, sample_size
+        )
     if plot_line:
         plot_lines(lines_to_plot, X, y)
+
+    if plot_gradient_graph:
+        plot_gradient(costs)
+
     return theta0, theta1
 
 
