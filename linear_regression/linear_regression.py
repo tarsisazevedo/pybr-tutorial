@@ -79,7 +79,7 @@ def update_parameters(
     theta0, theta1, X, y, alpha=0.005, sample_size=128, plot_line=False
 ):
     # gradient descent
-    dtheta0, dtheta1 = derivatives(theta0, theta1, X, y)
+    dtheta0, dtheta1 = derivatives_sthocastic(theta0, theta1, X, y)
     theta0 = theta0 - (alpha * dtheta0)
     theta1 = theta1 - (alpha * dtheta1)
     return theta0, theta1
