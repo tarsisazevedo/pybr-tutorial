@@ -14,6 +14,7 @@ matplotlib = "*"
 flask = "*"
 pandas = "*"
 seaborn = "*"
+scikit-learn="*"
 
 [requires]
 python_version = "3.7"
